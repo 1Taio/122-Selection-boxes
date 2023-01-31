@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FF2999DC">
-        <ListBox x:Name="lbDisplay" HorizontalAlignment="Left" Height="284" Margin="336,64,0,0" VerticalAlignment="Top" Width="204" d:ItemsSource="{d:SampleData ItemCount=10}" Background="White"/>
+        <ListBox x:Name="lbDisplay" HorizontalAlignment="Left" Height="284" Margin="336,64,0,0" VerticalAlignment="Top" Width="204" d:ItemsSource="{d:SampleData ItemCount=10}" Background="White" SelectionChanged="lbDisplay_SelectionChanged"/>
         <TextBox x:Name="txtToAdd" HorizontalAlignment="Left" Height="32" Margin="103,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="104"/>
         <Label Content="Information to add to list" HorizontalAlignment="Left" Height="37" Margin="103,33,0,0" VerticalAlignment="Top" Width="145"/>
         <Button x:Name="btnAddToList" Content="Add To List" HorizontalAlignment="Left" Height="35" Margin="103,145,0,0" VerticalAlignment="Top" Width="122" Click="btnAddToList_Click"/>
@@ -20,6 +20,8 @@
         <Label Content="LastName" HorizontalAlignment="Left" Height="34" Margin="561,157,0,0" VerticalAlignment="Top" Width="59"/>
         <Label Content="CsiGrade" HorizontalAlignment="Left" Height="34" Margin="561,222,0,0" VerticalAlignment="Top" Width="59"/>
         <Label Content="GenEdGrade" HorizontalAlignment="Left" Height="34" Margin="561,264,0,0" VerticalAlignment="Top" Width="80"/>
+        <Button x:Name="btnAddStudent" Content="Add Student" HorizontalAlignment="Left" Height="35" Margin="646,332,0,0" VerticalAlignment="Top" Width="123" Click="btnAddStudent_Click"/>
+        <Button x:Name="btnRemoveSelectedStudent" Content="Remove Selected Student" HorizontalAlignment="Left" Height="28" Margin="103,228,0,0" VerticalAlignment="Top" Width="145" Click="btnRemoveSelectedStudent_Click"/>
 
     </Grid>
 </Window>

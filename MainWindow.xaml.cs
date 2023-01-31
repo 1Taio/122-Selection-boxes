@@ -21,6 +21,8 @@ namespace _122_Selection_boxes
     public partial class MainWindow : Window
     {
         List<Student> students = new List<Student>();
+
+        Student selectedStudent = null;
         public MainWindow()
         {
 
@@ -36,6 +38,9 @@ namespace _122_Selection_boxes
             //////lbDisplay.Items.Add(true);
             PreLoad();
             DisplayToListBox();
+
+            //automatically select the first item in our listbox load
+            lbDisplay.SelectedIndex = 0;
             
         }
         
@@ -52,7 +57,12 @@ namespace _122_Selection_boxes
 
 
         public void DisplayToListBox()
+
         {
+            //use the .Clear() method to clear all iteams from our listbox
+            lbDisplay.Items.Clear();
+
+
             for (int i = 0; i < students.Count; i++)
             {
                 string firstName = students[i].FirstName;
@@ -96,16 +106,66 @@ namespace _122_Selection_boxes
             }
             else
             {
-                Student selectedStudent = students[selectedindex];
-                txtFirstName.Text = selectedStudent.FirstName;
-                txtLastName.Text = selectedStudent.LastName;
-                txtCsiGrade.Text = selectedStudent.CSIGrade.ToString();
-                txtGenEdGrade.Text = selectedStudent.GenEdGrade.ToString();
-
-
+                DisplayStudentInformation(selectedStudent);
 
             }
 
+        }
+
+        private void btnAddStudent_Click(object sender, RoutedEventArgs e)
+        {
+            string fName = txtFirstName.Text;
+            string LName = txtLastName.Text;
+            string csi = txtCsiGrade.Text;
+            string gened = txtGenEdGrade.Text;
+
+            int csiGrade = int.Parse(csi);
+            int genEdGrade = int.Parse(gened);
+
+            // i want to create a new instance of students
+            
+
+
+
+            students.Add(new Student(fName, LName, csiGrade, genEdGrade));
+            //update our listbox
+            //so we call our method
+
+            DisplayToListBox();
+            
+        }
+
+
+        public void DisplayStudentInformation(Student student)
+        {
+            
+            txtFirstName.Text = student.FirstName;
+            txtLastName.Text = student.LastName;
+            txtCsiGrade.Text = student.CSIGrade.ToString();
+            txtGenEdGrade.Text = student.GenEdGrade.ToString();
+
+
+        }
+        private void btnRemoveSelectedStudent_Click(object sender, RoutedEventArgs e)
+        {
+
+            //remove by index
+            //int selectedIndex = lbDisplay.SelectedIndex;
+            //students.RemoveAt(selectedIndex);
+
+            //Remove by Object
+            int selectedIndex = lbDisplay.SelectedIndex;
+            Student selectedStudent = students[selectedIndex];
+            students.Remove(selectedStudent);
+
+            DisplayToListBox();
+        }
+
+        private void lbDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int selectedIndex = lbDisplay.SelectedIndex;
+
+            selectedStudent = students[selectedIndex];
         }
     }
 }
