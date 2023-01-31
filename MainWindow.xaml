@@ -22,6 +22,7 @@
         <Label Content="GenEdGrade" HorizontalAlignment="Left" Height="34" Margin="561,264,0,0" VerticalAlignment="Top" Width="80"/>
         <Button x:Name="btnAddStudent" Content="Add Student" HorizontalAlignment="Left" Height="35" Margin="646,332,0,0" VerticalAlignment="Top" Width="123" Click="btnAddStudent_Click"/>
         <Button x:Name="btnRemoveSelectedStudent" Content="Remove Selected Student" HorizontalAlignment="Left" Height="28" Margin="103,228,0,0" VerticalAlignment="Top" Width="145" Click="btnRemoveSelectedStudent_Click"/>
+        <ComboBox x:Name="cbDisplay" HorizontalAlignment="Left" Height="43" Margin="336,367,0,0" VerticalAlignment="Top" Width="204" SelectionChanged="cbDisplay_SelectionChanged"/>
 
     </Grid>
 </Window>

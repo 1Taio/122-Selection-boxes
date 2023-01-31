@@ -38,9 +38,12 @@ namespace _122_Selection_boxes
             //////lbDisplay.Items.Add(true);
             PreLoad();
             DisplayToListBox();
+            DisplayToComboBox();
 
+            cbDisplay.Items.Add("Breshna");
             //automatically select the first item in our listbox load
             lbDisplay.SelectedIndex = 0;
+            cbDisplay.SelectedIndex = 0;
             
         }
         
@@ -70,6 +73,23 @@ namespace _122_Selection_boxes
                 string fullName = firstName + " " + lastName;
 
                 lbDisplay.Items.Add(fullName);
+            }
+        }
+
+        public void DisplayToComboBox()
+
+        {
+            //use the .Clear() method to clear all iteams from our listbox
+            cbDisplay.Items.Clear();
+
+
+            for (int i = 0; i < students.Count; i++)
+            {
+                string firstName = students[i].FirstName;
+                string lastName = students[i].LastName;
+                string fullName = firstName + " " + lastName;
+
+                cbDisplay.Items.Add(fullName);
             }
         }
 
@@ -166,6 +186,21 @@ namespace _122_Selection_boxes
             int selectedIndex = lbDisplay.SelectedIndex;
 
             selectedStudent = students[selectedIndex];
+
+
+            DisplayStudentInformation(selectedStudent);
+        }
+
+
+        public void DisplayUpdatedInformation(int selectedIndex)
+        {
+            
+            selectedStudent = students[selectedIndex];
+            DisplayStudentInformation(selectedStudent);
+        }
+        private void cbDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DisplayUpdatedInformation(cbDisplay.SelectedIndex);
         }
     }
 }
